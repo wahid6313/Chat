@@ -101,3 +101,15 @@ export const logOut = (req, res) => {
     console.log(error);
   }
 };
+
+export const getOtherUsers = async (req, res) => {
+  try {
+    const loggedInUser = req.id;
+    const otherUser = await User.find({ _id: { $ne: loggedInUser } }).select(
+      "-password"
+    );
+    return res.status(200).json(otherUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
