@@ -52,7 +52,7 @@ function SignUp() {
             ></input>
           </div>
           <div className=" text-center mt-7">
-            <button className="w-full bg-white h-9 rounded-lg text-black hover:bg-gray-200">
+            <button className="w-full bg-white h-9 rounded-lg text-black hover:bg-gray-300">
               SignUp
             </button>
           </div>
