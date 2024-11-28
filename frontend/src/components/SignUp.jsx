@@ -5,7 +5,7 @@ function SignUp() {
   return (
     <div className="min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
-        <h1 className="text-4xl text-center font-semibold text-white mb-7">
+        <h1 className="text-4xl text-center font-semibold text-white mb-6">
           SignUp
         </h1>
         <form action="">
