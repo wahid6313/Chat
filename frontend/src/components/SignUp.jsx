@@ -51,6 +51,16 @@ function SignUp() {
               className="w-full h-10 input input-bordered text-white"
             ></input>
           </div>
+          <div className="mt-4 flex items-center">
+            <div className="flex items-center">
+              <p className="text-white">Male</p>
+              <input type="checkbox" defaultChecked className="checkbox mx-2" />
+            </div>
+            <div className="flex items-center ml-6">
+              <p className="text-white">Female</p>
+              <input type="checkbox" defaultChecked className="checkbox mx-2" />
+            </div>
+          </div>
           <div className=" text-center mt-7">
             <button className="w-full bg-white h-9 rounded-lg text-black hover:bg-gray-300">
               SignUp
