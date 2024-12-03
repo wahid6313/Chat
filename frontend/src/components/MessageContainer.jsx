@@ -1,6 +1,7 @@
 import React from "react";
 import SendInput from "./SendInput.jsx";
 import Messages from "./Messages.jsx";
+import { IoMdLogOut } from "react-icons/io";
 
 const MessageContainer = () => {
   return (
@@ -21,8 +22,9 @@ const MessageContainer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-neutral rounded-lg">
-          <button className="px-3 text-sm py-2 hover:text-white">LogOut</button>
+        <div className="bg-neutral rounded-lg flex items-center hover:text-white">
+          <button className="px-2 text-sm py-2 ">Logout</button>
+          <IoMdLogOut className="mr-2" />
         </div>
       </div>
       <div className="divider px-3  my-0 py-0 h-1"> </div>

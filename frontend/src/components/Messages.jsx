@@ -13,24 +13,6 @@ const Messages = () => {
       <SingleMessage />
       <SingleMessage />
       <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
-      <SingleMessage />
     </div>
   );
 };

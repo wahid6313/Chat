@@ -16,10 +16,9 @@ const SingleMessage = () => {
         <time className="text-xs opacity-50 ml-4 ">12:45</time>
       </div>
       <div className="chat-bubble text-white mb-2">
-        {" "}
         message checkmessage checkmessage checkmessage
       </div>
-      {/* <div className="chat-footer opacity-50">Delivered</div> */}
+      {/* <div className="chat-footer opacity-30 text-xs my-0 py-0">Delivered</div> */}
     </div>
   );
 };

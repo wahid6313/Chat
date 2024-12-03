@@ -1,5 +1,6 @@
 import React from "react";
 import OtherUsers from "./OtherUsers.jsx";
+import { VscGoToSearch } from "react-icons/vsc";
 
 const Sidebar = () => {
   return (
@@ -12,9 +13,10 @@ const Sidebar = () => {
         />
         <button
           type="submit"
-          className="border border-slate-600 py-[9px] ml-2 rounded-lg p-2 hover:bg-neutral"
+          className="py-[9px] ml-2 rounded-lg p-2 bg-neutral  hover:text-white gap-2 flex items-center"
         >
           Search
+          <VscGoToSearch className="h-5 w-5 hover:text-white" />
         </button>
       </form>
       <div className="divider"></div>
