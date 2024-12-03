@@ -19,7 +19,7 @@ const Sidebar = () => {
           <VscGoToSearch className="h-5 w-5 hover:text-white" />
         </button>
       </form>
-      <div className="divider"></div>
+      <div className="divider py-0 mb-0"></div>
       <OtherUsers />
       {/* <div className="bg-white p-">
         <button className="btn btn-sm">LogOut</button>
