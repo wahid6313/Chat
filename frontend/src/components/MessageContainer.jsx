@@ -5,9 +5,11 @@ import { IoMdLogOut } from "react-icons/io";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MessageContainer = () => {
   const navigate = useNavigate();
+  const { selectedUser } = useSelector((store) => store.user);
 
   const logoutHandler = async () => {
     try {
@@ -25,15 +27,14 @@ const MessageContainer = () => {
         <div className="flex items-center">
           <div className="avatar online">
             <div className="w-12 rounded-full cursor-pointer">
-              <img
-                src="https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg"
-                alt="user-profile"
-              />
+              <img src={selectedUser?.profilePhoto} alt="user-profile" />
             </div>
           </div>
           <div className="px-3 ">
             <div className="flex gap-2">
-              <p className="text-base font-semibold">wahid ali</p>
+              <p className="text-base font-semibold">
+                {selectedUser?.fullName}
+              </p>
             </div>
           </div>
         </div>
