@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SendInput from "./SendInput.jsx";
 import Messages from "./Messages.jsx";
 import { IoMdLogOut } from "react-icons/io";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser } from "../redux/userSlice.js";
+
+import { BiSolidMessageRoundedDetail } from "react-icons/bi";
 
 const MessageContainer = () => {
   const navigate = useNavigate();
-  const { selectedUser } = useSelector((store) => store.user);
+  const { selectedUser, authUser } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   const logoutHandler = async () => {
     try {
@@ -20,6 +24,10 @@ const MessageContainer = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    return () => dispatch(setSelectedUser(null));
+  }, []);
 
   return (
     <>
@@ -53,8 +61,16 @@ const MessageContainer = () => {
           <SendInput />
         </div>
       ) : (
-        <div className="md:min-w-[550px] flex flex-col ">
-          <h1>Lets start conversation</h1>
+        <div className="md:min-w-[550px] flex flex-col items-center justify-center">
+          <BiSolidMessageRoundedDetail className="w-24 h-24" />
+          <h1 className="text-lg ">
+            {" "}
+            👋,{" "}
+            <span className="font-semibold text-white">
+              {authUser?.fullName} ✌️
+            </span>
+          </h1>
+          <h1 className="text-lg font-light">Let's start conversation 💬</h1>
         </div>
       )}
     </>
