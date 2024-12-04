@@ -5,9 +5,10 @@ import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { app, server } from "./socket/socketio.js";
 dotenv.config({});
 
-const app = express();
+// const app = express();
 
 app.get("/", (req, res) => {
   res.status(201).json({
@@ -32,7 +33,7 @@ app.use(cors(corsOption));
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.log(`server running on port ${PORT}`);
 });

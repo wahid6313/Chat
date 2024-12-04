@@ -6,20 +6,26 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedUser } from "../redux/userSlice.js";
+import { setAuthUser, setSelectedUser } from "../redux/userSlice.js";
 
 import { BiSolidMessageRoundedDetail } from "react-icons/bi";
 
-const MessageContainer = () => {
+const MessageContainer = ({ user }) => {
   const navigate = useNavigate();
-  const { selectedUser, authUser } = useSelector((store) => store.user);
+  const { selectedUser, authUser, onlineUsers } = useSelector(
+    (store) => store.user
+  );
   const dispatch = useDispatch();
+  // const isOnline =
+  //   Array.isArray(onlineUsers) && onlineUsers.includes(user?._id);
+  const isOnline = onlineUsers.includes(selectedUser?._id);
 
   const logoutHandler = async () => {
     try {
       const res = await axios.get(`http://localhost:8080/api/v1/user/logOut`);
       navigate("/login");
       toast.success(res.data.message);
+      dispatch(setAuthUser(null));
     } catch (error) {
       console.log(error);
     }
@@ -31,11 +37,11 @@ const MessageContainer = () => {
 
   return (
     <>
-      {selectedUser != null ? (
+      {selectedUser !== null ? (
         <div className="md:min-w-[550px] flex flex-col ">
           <div className="flex items-center  px-4 py-[19.3px] justify-between">
             <div className="flex items-center">
-              <div className="avatar online">
+              <div className={`avatar ${isOnline ? "online" : ""}`}>
                 <div className="w-12 rounded-full cursor-pointer">
                   <img src={selectedUser?.profilePhoto} alt="user-profile" />
                 </div>

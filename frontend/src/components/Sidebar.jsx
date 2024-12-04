@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import OtherUsers from "./OtherUsers.jsx";
 import { VscGoToSearch } from "react-icons/vsc";
+import { useDispatch, useSelector } from "react-redux";
+import { setOtherUsers } from "../redux/userSlice.js";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
+  const [search, setSearch] = useState("");
+  const { otherUser } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+    const conversationUser = otherUser?.find((user) =>
+      user.fullName.toLowerCase().includes(search.toLowerCase())
+    );
+    if (conversationUser) {
+      dispatch(setOtherUsers([conversationUser]));
+    } else {
+      toast.error("user not find");
+    }
+
+    setSearch("");
+  };
+
   return (
     <div className=" border-r border-gray-600 p-4">
-      <form action="" className="flex items-center">
+      <form onSubmit={searchHandler} action="" className="flex items-center">
         <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           className="input input-bordered rounded-lg "
           placeholder="search..."

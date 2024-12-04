@@ -34,7 +34,13 @@ const SingleMessage = ({ message }) => {
           : selectedUser?.fullName}
         <time className="text-xs opacity-50 ml-4 ">12:45</time>
       </div>
-      <div className="chat-bubble text-white mb-2">{message?.message}</div>
+      <div
+        className={`chat-bubble  ${
+          authUser?._id === message?.senderId ? "" : "bg-gray-500 text-gray-200"
+        }   mb-2`}
+      >
+        {message?.message}
+      </div>
       {/* <div className="chat-footer opacity-30 text-xs my-0 py-0">Delivered</div> */}
     </div>
   );

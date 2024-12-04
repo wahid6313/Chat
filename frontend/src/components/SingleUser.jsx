@@ -4,7 +4,10 @@ import { setSelectedUser } from "../redux/userSlice.js";
 
 const SingleUser = ({ user }) => {
   const dispatch = useDispatch();
-  const { selectedUser } = useSelector((store) => store.user);
+  const { selectedUser, onlineUsers } = useSelector((store) => store.user);
+
+  const isOnline =
+    Array.isArray(onlineUsers) && onlineUsers.includes(user?._id);
 
   const selectedUserHandler = (user) => {
     dispatch(setSelectedUser(user));
@@ -18,7 +21,7 @@ const SingleUser = ({ user }) => {
           selectedUser?._id === user?._id ? "bg-neutral-600" : ""
         } flex items-center cursor-pointer hover:bg-neutral-600 hover:text-white rounded-xl p-2`}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
             <img src={user?.profilePhoto} alt="user-profile" />
           </div>
