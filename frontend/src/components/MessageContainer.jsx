@@ -22,34 +22,42 @@ const MessageContainer = () => {
   };
 
   return (
-    <div className="md:min-w-[550px] flex flex-col ">
-      <div className="flex items-center  px-4 py-[19.3px] justify-between">
-        <div className="flex items-center">
-          <div className="avatar online">
-            <div className="w-12 rounded-full cursor-pointer">
-              <img src={selectedUser?.profilePhoto} alt="user-profile" />
+    <>
+      {selectedUser != null ? (
+        <div className="md:min-w-[550px] flex flex-col ">
+          <div className="flex items-center  px-4 py-[19.3px] justify-between">
+            <div className="flex items-center">
+              <div className="avatar online">
+                <div className="w-12 rounded-full cursor-pointer">
+                  <img src={selectedUser?.profilePhoto} alt="user-profile" />
+                </div>
+              </div>
+              <div className="px-3 ">
+                <div className="flex gap-2">
+                  <p className="text-base font-semibold">
+                    {selectedUser?.fullName}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              onClick={logoutHandler}
+              className="bg-neutral rounded-lg flex items-center hover:text-white"
+            >
+              <button className="px-2 text-sm py-2 ">Logout</button>
+              <IoMdLogOut className="mr-2" />
             </div>
           </div>
-          <div className="px-3 ">
-            <div className="flex gap-2">
-              <p className="text-base font-semibold">
-                {selectedUser?.fullName}
-              </p>
-            </div>
-          </div>
+          <div className="divider px-3  my-0 py-0 h-1"> </div>
+          <Messages />
+          <SendInput />
         </div>
-        <div
-          onClick={logoutHandler}
-          className="bg-neutral rounded-lg flex items-center hover:text-white"
-        >
-          <button className="px-2 text-sm py-2 ">Logout</button>
-          <IoMdLogOut className="mr-2" />
+      ) : (
+        <div className="md:min-w-[550px] flex flex-col ">
+          <h1>Lets start conversation</h1>
         </div>
-      </div>
-      <div className="divider px-3  my-0 py-0 h-1"> </div>
-      <Messages />
-      <SendInput />
-    </div>
+      )}
+    </>
   );
 };
 
